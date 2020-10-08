@@ -20,11 +20,11 @@ const takedonation = (id) => {
     .get()
     .then((doc) => {
       ngo_name = doc.data().org_name;
+      db.collection("Donations").doc(id).update({
+        status: "Donated",
+        ngoid: ngo_name,
+      });
     });
-  db.collection("Donations").doc(id).update({
-    status: "Donated",
-    ngoid: ngo_name,
-  });
 };
 const giveDonations = (data) => {
   if (data.length) {
