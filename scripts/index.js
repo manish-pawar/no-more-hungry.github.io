@@ -89,11 +89,11 @@ const giveDonations = (data) => {
     donationsList.innerHTML = html;
   }
 };
-
-const seeDonations = (data) => {
-  if (data.length) {
-    let html = "";
-    html += `
+const seeDonations = (data, user) => {
+  if (user) {
+    if (data.length) {
+      let html = "";
+      html += `
     <div class="center-align ">
     
     
@@ -104,10 +104,10 @@ const seeDonations = (data) => {
    
   </div>`;
 
-    data.forEach((doc) => {
-      const don = doc.data();
-      if (don.status == "pending") {
-        let food = `
+      data.forEach((doc) => {
+        const don = doc.data();
+        if (don.status == "pending") {
+          let food = `
     <div class="col l4 s12">
     <div class="card ">
     <div class="card-content ">
@@ -119,9 +119,9 @@ const seeDonations = (data) => {
    
   </div></div>
     `;
-        html += food;
-      } else {
-        food = `
+          html += food;
+        } else {
+          food = `
         
         <div class="col l4 s12">
         <div class="card blue darken-1">
@@ -136,10 +136,28 @@ const seeDonations = (data) => {
        
       </div></div>
         `;
-        html += food;
-      }
-    });
-    donationsList.innerHTML = html;
+          html += food;
+        }
+      });
+      donationsList.innerHTML = html;
+    } else {
+      html = `<div class="center-align ">
+    
+    
+      <a class="waves-effect waves-light btn-small center-align modal-trigger" data-target="modal-create">Have Food? click here to donate</a>
+     
+      
+     
+     
+    </div><div class="card ">
+      <div class="card-content ">
+      <h5 class="center-align">You didnt donate anything</h5>
+      </div>
+     
+     
+    </div>`;
+      donationsList.innerHTML = html;
+    }
   } else {
     html = `<div class="card ">
       <div class="card-content ">
