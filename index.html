@@ -1,0 +1,195 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>No More Hungry</title>
+  <style>
+    body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  @media (min-widh: 500px) {
+   #logo{
+      font-size: 20px !important;
+    }
+  }
+  </style>
+</head>
+<body class="grey lighten-3">
+
+  
+  <div class="navbar-fixed navbar-expand-s">
+  <nav>
+    <div class="nav-wrapper container">
+      <ul id="nav-mobile" class="left">
+      <li class=" ">
+        <a href="#" class=""> <h5>NMH</h5></a>
+      </li>
+    </ul>
+      
+      <ul id="nav-mobile" class="right">
+       
+        <li class="logged-in ">
+          <a href="#" class="" id="logout">Logout</a>
+        </li>
+        <li class="logged-out">
+          <a href="#" class=" modal-trigger" data-target="modal-login">Login</a>
+        </li>
+        <li class="logged-out">
+          <a href="#" class="modal-trigger" data-target="modal-signup">Sign up</a>
+        </li>
+     
+    </ul>
+    
+  </nav></div>
+<main>
+ 
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" required />
+          <label for="signup-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        
+        <div class="input-field">
+          <input type="text" id="org_name" required />
+          <label for="org_name">Enter  Restaurant/Bakery/NGO's name here</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="org_city" required />
+          <label for="org_city">City</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="org_state" required />
+          <label for="org_state">State</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="org_add" required />
+          <label for="org_add">Enter  Restaurant/Bakery/NGO's address</label>
+        </div>
+        
+        <div class="switch" style="margin-bottom: 20px;">
+          <label>
+            
+            <input type="checkbox" id="typeo">
+            <span class="lever"></span>
+            NGO's please select this option.
+          </label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4><br />
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Login</button>
+      </form>
+    </div>
+  </div>
+
+ 
+
+ 
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <h4>Donate Food</h4><br />
+      <form id="donate-form">
+        <div class="input-field">
+          <input type="text" id="qun" required>
+          <label for="qun">Food Quantity  (How much peoples can u feed?)</label>
+        </div>
+        <div class="input-field">
+          <textarea id="desc" class="materialize-textarea" required></textarea>
+          <label for="desc">Food Description </label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Donate</button>
+      </form>
+    </div>
+  </div>
+
+  
+  <div  style="margin-top: 40px;">
+      <div class="row donations">
+     </div>
+    
+  </div></main>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">One Donation can make your's and donar's life better</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">About us</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Contact us</a></li>
+            <li><a class="grey-text text-lighten-3" href="#">Go to top</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © No More Hungry
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
+
+ 
+  
+  <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-firestore.js"></script>
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDsEMNV0V3A5sc8MyEtAWon_D3G4IhbcOs",
+    authDomain: "no-more-hunger-291721.firebaseapp.com",
+    databaseURL: "https://no-more-hunger-291721.firebaseio.com",
+    projectId: "no-more-hunger-291721",
+    appId: "1:2555904456:web:5d2cb80d25e49532f500fd",
+    measurementId: "G-B06XZPJWTD"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script>
+</body>
+</html>
